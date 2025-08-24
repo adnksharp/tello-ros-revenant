@@ -1,0 +1,16 @@
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/lib/cv_ros_bridge_cpp/cv_ros_bridge_cpp
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/ament_index/resource_index/package_run_dependencies/cv_ros_bridge_cpp
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/ament_index/resource_index/parent_prefix_path/cv_ros_bridge_cpp
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/environment/ament_prefix_path.sh
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/environment/ament_prefix_path.dsv
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/environment/path.sh
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/environment/path.dsv
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/local_setup.bash
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/local_setup.sh
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/local_setup.zsh
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/local_setup.dsv
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/package.dsv
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/ament_index/resource_index/packages/cv_ros_bridge_cpp
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/cmake/cv_ros_bridge_cppConfig.cmake
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/cmake/cv_ros_bridge_cppConfig-version.cmake
+/home/xtal/ros2_ws/install/cv_ros_bridge_cpp/share/cv_ros_bridge_cpp/package.xml

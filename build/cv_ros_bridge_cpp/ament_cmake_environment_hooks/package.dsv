@@ -1,0 +1,4 @@
+source;share/cv_ros_bridge_cpp/local_setup.bash
+source;share/cv_ros_bridge_cpp/local_setup.dsv
+source;share/cv_ros_bridge_cpp/local_setup.sh
+source;share/cv_ros_bridge_cpp/local_setup.zsh

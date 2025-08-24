@@ -1,0 +1,1 @@
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/ament_cmake_environment_hooks/local_setup.sh

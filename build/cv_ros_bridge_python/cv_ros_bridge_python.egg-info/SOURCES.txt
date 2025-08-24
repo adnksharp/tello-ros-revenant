@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+cv_ros_bridge_python/__init__.py
+cv_ros_bridge_python/cv_ros_bridge.py
+cv_ros_bridge_python.egg-info/PKG-INFO
+cv_ros_bridge_python.egg-info/SOURCES.txt
+cv_ros_bridge_python.egg-info/dependency_links.txt
+cv_ros_bridge_python.egg-info/entry_points.txt
+cv_ros_bridge_python.egg-info/requires.txt
+cv_ros_bridge_python.egg-info/top_level.txt
+cv_ros_bridge_python.egg-info/zip-safe
+resource/cv_ros_bridge_python

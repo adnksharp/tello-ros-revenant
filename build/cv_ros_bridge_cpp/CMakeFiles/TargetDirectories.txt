@@ -1,0 +1,10 @@
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/uninstall.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/cv_ros_bridge_cpp_uninstall.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/cv_ros_bridge_cpp.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/test.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/edit_cache.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/rebuild_cache.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/list_install_components.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/install.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/install/local.dir
+/home/xtal/ros2_ws/build/cv_ros_bridge_cpp/CMakeFiles/install/strip.dir
