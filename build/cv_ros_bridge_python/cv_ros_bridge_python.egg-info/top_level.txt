@@ -1,1 +1,0 @@
-cv_ros_bridge_python
