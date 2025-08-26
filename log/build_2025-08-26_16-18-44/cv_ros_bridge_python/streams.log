@@ -1,0 +1,25 @@
+[0.804s] Invoking command in '/home/xtal/ros2_ws/build/cv_ros_bridge_python': PYTHONPATH=/home/xtal/ros2_ws/build/cv_ros_bridge_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/xtal/ros2_ws/install/cv_ros_bridge_python/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/xtal/ros2_ws/build/cv_ros_bridge_python/build --no-deps symlink_data
+[1.096s] running develop
+[1.295s] running egg_info
+[1.295s] creating cv_ros_bridge_python.egg-info
+[1.316s] writing cv_ros_bridge_python.egg-info/PKG-INFO
+[1.316s] writing dependency_links to cv_ros_bridge_python.egg-info/dependency_links.txt
+[1.316s] writing entry points to cv_ros_bridge_python.egg-info/entry_points.txt
+[1.317s] writing requirements to cv_ros_bridge_python.egg-info/requires.txt
+[1.317s] writing top-level names to cv_ros_bridge_python.egg-info/top_level.txt
+[1.317s] writing manifest file 'cv_ros_bridge_python.egg-info/SOURCES.txt'
+[1.356s] reading manifest file 'cv_ros_bridge_python.egg-info/SOURCES.txt'
+[1.357s] writing manifest file 'cv_ros_bridge_python.egg-info/SOURCES.txt'
+[1.377s] running build_ext
+[1.377s] Creating /home/xtal/ros2_ws/install/cv_ros_bridge_python/lib/python3.12/site-packages/cv-ros-bridge-python.egg-link (link to .)
+[1.378s] Installing opencv_bridge script to /home/xtal/ros2_ws/install/cv_ros_bridge_python/lib/cv_ros_bridge_python
+[1.378s] Installing opencv_bridge_image script to /home/xtal/ros2_ws/install/cv_ros_bridge_python/lib/cv_ros_bridge_python
+[1.378s] 
+[1.378s] Installed /home/xtal/ros2_ws/build/cv_ros_bridge_python
+[1.378s] running symlink_data
+[1.378s] creating /home/xtal/ros2_ws/install/cv_ros_bridge_python/share/ament_index
+[1.378s] creating /home/xtal/ros2_ws/install/cv_ros_bridge_python/share/ament_index/resource_index
+[1.378s] creating /home/xtal/ros2_ws/install/cv_ros_bridge_python/share/ament_index/resource_index/packages
+[1.378s] symbolically linking /home/xtal/ros2_ws/build/cv_ros_bridge_python/resource/cv_ros_bridge_python -> /home/xtal/ros2_ws/install/cv_ros_bridge_python/share/ament_index/resource_index/packages
+[1.379s] symbolically linking /home/xtal/ros2_ws/build/cv_ros_bridge_python/package.xml -> /home/xtal/ros2_ws/install/cv_ros_bridge_python/share/cv_ros_bridge_python
+[1.426s] Invoked command in '/home/xtal/ros2_ws/build/cv_ros_bridge_python' returned '0': PYTHONPATH=/home/xtal/ros2_ws/build/cv_ros_bridge_python/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/xtal/ros2_ws/install/cv_ros_bridge_python/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/xtal/ros2_ws/build/cv_ros_bridge_python/build --no-deps symlink_data

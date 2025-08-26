@@ -21,9 +21,6 @@ class ImagePublisher(Node):
     ) -> NDArray[np.uint8]:
         rows, cols, channels = size
         img: NDArray[np.uint8] = np.full((rows, cols, channels), color, dtype=np.uint8)
-        # print(f"RGB color code: {color}")
-        # print(f"Size of the generated image is: {img.shape}")
-        # print(f"Pixels: {rows * cols}")
         return img
 
     def timer_callback(self):
