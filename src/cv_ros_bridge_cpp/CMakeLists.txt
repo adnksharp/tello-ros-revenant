@@ -28,7 +28,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(cv_ros_bridge_cpp src/cv_ros_bridge.cpp)
+add_executable(cv_ros_bridge_cpp src/cv_ros_bridge_talker.cpp)
 # add_executable(cv_ros_bridge_cpp src/cv_gazebo_bridge.cpp)
 ament_target_dependencies(cv_ros_bridge_cpp rclcpp sensor_msgs cv_bridge std_msgs image_transport)
 

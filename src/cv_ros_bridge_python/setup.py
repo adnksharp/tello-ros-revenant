@@ -20,8 +20,9 @@ setup(
     entry_points={
         "console_scripts": [
             "opencv_bridge = cv_ros_bridge_python.cv_ros_bridge:main",
-            "opencv_bridge_image = cv_ros_bridge_python.cv_ros_bridge_image:main",
+            "opencv_bridge_talker = cv_ros_bridge_python.cv_ros_bridge_talker:main",
             "opencv_bridge_listener = cv_ros_bridge_python.cv_ros_bridge_listener:main",
+            "image_publisher = cv_ros_bridge_python.image_publisher:main",
         ],
     },
 )

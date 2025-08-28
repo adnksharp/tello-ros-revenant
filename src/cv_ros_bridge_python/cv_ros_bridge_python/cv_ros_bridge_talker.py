@@ -9,7 +9,7 @@ from sensor_msgs.msg import Image
 
 class ImagePublisher(Node):
     def __init__(self, image_path: str):
-        super().__init__("opencv_image_bridge")
+        super().__init__("opencv_image_talker")
         self.publisher_ = self.create_publisher(Image, "image_cv_bridge", 10)
         self.bridge = CvBridge()
         self.image_path = image_path
@@ -30,10 +30,7 @@ def main(args=None):
     rclpy.init(args=args)
     image_path = os.path.expanduser("~/ros2_ws/src/kanye.jpg")
     node = ImagePublisher(image_path)
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
+    rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
 

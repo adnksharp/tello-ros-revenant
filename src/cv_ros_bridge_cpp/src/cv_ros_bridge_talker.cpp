@@ -11,7 +11,7 @@ class ImagePublisher : public rclcpp::Node
 {
 public:
   ImagePublisher()
-  : Node("opencv_image_bridge")
+  : Node("opencv_image_talker")
   {
     publisher_ = this->create_publisher<sensor_msgs::msg::Image>("image_cv_bridge", 10);
     timer_ = this->create_wall_timer(

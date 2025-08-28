@@ -16,6 +16,7 @@ class ImageSubscriber(Node):
     def listener_callback(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
+            cv2.namedWindow("Received Image", cv2.WINDOW_NORMAL | cv2.WINDOW_GUI_NORMAL)
             cv2.imshow("Received Image", cv_image)
             cv2.waitKey(1)
         except Exception as e:
