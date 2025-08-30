@@ -23,6 +23,7 @@ setup(
             "opencv_bridge_talker = cv_ros_bridge_python.cv_ros_bridge_talker:main",
             "opencv_bridge_listener = cv_ros_bridge_python.cv_ros_bridge_listener:main",
             "image_publisher = cv_ros_bridge_python.image_publisher:main",
+            "image_splitter = cv_ros_bridge_python.image_splitter:main",
         ],
     },
 )

@@ -1,9 +1,0 @@
-source;share/cv_ros_bridge_python/hook/pythonpath.ps1
-source;share/cv_ros_bridge_python/hook/pythonpath.dsv
-source;share/cv_ros_bridge_python/hook/pythonpath.sh
-source;share/cv_ros_bridge_python/hook/ament_prefix_path.ps1
-source;share/cv_ros_bridge_python/hook/ament_prefix_path.dsv
-source;share/cv_ros_bridge_python/hook/ament_prefix_path.sh
-source;../../build/cv_ros_bridge_python/share/cv_ros_bridge_python/hook/pythonpath_develop.ps1
-source;../../build/cv_ros_bridge_python/share/cv_ros_bridge_python/hook/pythonpath_develop.dsv
-source;../../build/cv_ros_bridge_python/share/cv_ros_bridge_python/hook/pythonpath_develop.sh
