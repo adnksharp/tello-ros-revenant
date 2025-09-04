@@ -24,6 +24,7 @@ setup(
             "opencv_bridge_listener = cv_ros_bridge_python.cv_ros_bridge_listener:main",
             "image_publisher = cv_ros_bridge_python.image_publisher:main",
             "image_splitter = cv_ros_bridge_python.image_splitter:main",
+            "image_threshold = cv_ros_bridge_python.image_threshold:main",
         ],
     },
 )
