@@ -16,7 +16,7 @@
 # ----------- #
 # Use this launch file to launch a device and visualize pointcloud along with the camera model D405.
 # The Parameters available for definition in the command line for the camera are described in rs_launch.configurable_parameters
-# command line example:
+# command line example
 # ros2 launch realsense2_camera rs_d405_pointcloud_launch.py
 
 """Launch realsense2_camera node."""

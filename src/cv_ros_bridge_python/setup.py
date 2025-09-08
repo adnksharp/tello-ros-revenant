@@ -25,6 +25,7 @@ setup(
             "image_publisher = cv_ros_bridge_python.image_publisher:main",
             "image_splitter = cv_ros_bridge_python.image_splitter:main",
             "image_threshold = cv_ros_bridge_python.image_threshold:main",
+            "realsense2_pointcloud = cv_ros_bridge_python.rs_d435_pointcloud_launch:generate_launch_description",
         ],
     },
 )
