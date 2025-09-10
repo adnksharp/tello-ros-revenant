@@ -1,0 +1,1 @@
+Invoking command in '/home/xtal/microros_ws/build/drive_base_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/xtal/ros2_ws/install/cv_ros_bridge_python:/opt/ros/jazzy /usr/bin/cmake /home/xtal/microros_ws/src/uros/drive_base/drive_base_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/xtal/microros_ws/install/drive_base_msgs
