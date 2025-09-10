@@ -1,3 +1,6 @@
+import os
+from glob import glob
+
 from setuptools import find_packages, setup
 
 package_name = "cv_ros_bridge_python"
@@ -9,6 +12,7 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         ("share/" + package_name, ["package.xml"]),
+        (os.path.join("share", package_name, "launch"), glob("launch/*.launch.py")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,
@@ -25,7 +29,8 @@ setup(
             "image_publisher = cv_ros_bridge_python.image_publisher:main",
             "image_splitter = cv_ros_bridge_python.image_splitter:main",
             "image_threshold = cv_ros_bridge_python.image_threshold:main",
-            "realsense2_pointcloud = cv_ros_bridge_python.rs_d435_pointcloud_launch:generate_launch_description",
+            "image_erotion = cv_ros_bridge_python.image_erotion:main",
+            "image_dilation = cv_ros_bridge_python.image_dilation:main",
         ],
     },
 )

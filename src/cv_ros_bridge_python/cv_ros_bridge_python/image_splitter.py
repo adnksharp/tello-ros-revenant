@@ -37,9 +37,9 @@ class SplitChannels(Node):
         self.ch0, self.ch1, self.ch2 = cv2.split(self.cv_image)
 
         try:
-            self.get_logger().info(
-                f"\nReceving from: [{self.image_sub.topic}], splitting channels and publishing at: [{self.grayscale_pub.topic}]"
-            )
+            # self.get_logger().info(
+            #     f"\nReceving from: [{self.image_sub.topic}], splitting channels and publishing at: [{self.grayscale_pub.topic}]"
+            # )
 
             grayscale_ros: Image = self.bridge.cv2_to_imgmsg(self.grayscale, "mono8")
             grayscale_ros.header.frame_id = "frame"

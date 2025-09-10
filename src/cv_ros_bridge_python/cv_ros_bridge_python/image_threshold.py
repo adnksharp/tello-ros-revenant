@@ -29,9 +29,9 @@ class ImageThreshold(Node):
         _, thresholded_inv = cv2.threshold(cv_image, 127, 255, cv2.THRESH_BINARY_INV)
 
         try:
-            self.get_logger().info(
-                f"\nReceving from: [{self.image_sub.topic}], splitting channels and publishing at: [{self.threshold_publisher.topic}]"
-            )
+            # self.get_logger().info(
+            #     f"\nReceving from: [{self.image_sub.topic}], threshold image at: [{self.threshold_publisher.topic}]"
+            # )
 
             grayscale_threshold: Image = self.bridge.cv2_to_imgmsg(
                 thresholded, encoding="mono8"

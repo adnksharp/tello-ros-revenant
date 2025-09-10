@@ -28,7 +28,7 @@ class ImagePublisher(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    image_path = os.path.expanduser("~/ros2_ws/src/kanye.jpg")
+    image_path = os.path.expanduser("~/ros2_ws/kanye.jpg")
     node = ImagePublisher(image_path)
     rclpy.spin(node)
     node.destroy_node()
