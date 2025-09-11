@@ -37,7 +37,7 @@ class ImagePublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    image_publisher = ImagePublisher("/home/xtal/ros2_ws/kanye.jpg")
+    image_publisher = ImagePublisher("/home/xtal/ros2_ws/bedroom.jpg")
     rclpy.spin(image_publisher)
 
 

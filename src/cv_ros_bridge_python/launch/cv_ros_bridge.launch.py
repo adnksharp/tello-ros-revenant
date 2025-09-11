@@ -54,4 +54,20 @@ def generate_launch_description() -> LaunchDescription:
     )
     ld.add_action(image_dilation)
 
+    edge_detection: Node = Node(
+        package="cv_ros_bridge_python",
+        executable="edge_detection",
+        name="edge_detection",
+        output="screen",
+    )
+    ld.add_action(edge_detection)
+
+    line_detection: Node = Node(
+        package="cv_ros_bridge_python",
+        executable="line_detection",
+        name="line_detection",
+        output="screen",
+    )
+    ld.add_action(line_detection)
+
     return ld

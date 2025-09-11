@@ -31,6 +31,8 @@ setup(
             "image_threshold = cv_ros_bridge_python.image_threshold:main",
             "image_erotion = cv_ros_bridge_python.image_erotion:main",
             "image_dilation = cv_ros_bridge_python.image_dilation:main",
+            "edge_detection = cv_ros_bridge_python.edge_detection:main",
+            "line_detection = cv_ros_bridge_python.line_detection:main",
         ],
     },
 )
