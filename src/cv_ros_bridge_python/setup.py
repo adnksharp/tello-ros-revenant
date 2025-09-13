@@ -33,6 +33,7 @@ setup(
             "image_dilation = cv_ros_bridge_python.image_dilation:main",
             "edge_detection = cv_ros_bridge_python.edge_detection:main",
             "line_detection = cv_ros_bridge_python.line_detection:main",
+            "sobel_derivative = cv_ros_bridge_python.sobel_derivative:main",
         ],
     },
 )

@@ -12,7 +12,7 @@ class ImageThreshold(Node):
         super().__init__("image_threshold")
 
         self.image_sub: Subscription = self.create_subscription(
-            Image, "image/gray", self.image_callback, 10
+            Image, "image/ch2", self.image_callback, 10
         )
         self.threshold_publisher: Publisher = self.create_publisher(
             Image, "image/thresholded", 10
@@ -25,8 +25,8 @@ class ImageThreshold(Node):
     def image_callback(self, msg: Image) -> None:
         self.image = msg
         cv_image = self.bridge.imgmsg_to_cv2(msg, "mono8")
-        _, thresholded = cv2.threshold(cv_image, 127, 255, cv2.THRESH_BINARY)
-        _, thresholded_inv = cv2.threshold(cv_image, 127, 255, cv2.THRESH_BINARY_INV)
+        _, thresholded = cv2.threshold(cv_image, 153, 255, cv2.THRESH_BINARY)
+        _, thresholded_inv = cv2.threshold(cv_image, 153, 255, cv2.THRESH_BINARY_INV)
 
         try:
             # self.get_logger().info(
@@ -58,7 +58,6 @@ def main(args=None):
         pass
     node.destroy_node()
     rclpy.shutdown()
-    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":

@@ -70,4 +70,12 @@ def generate_launch_description() -> LaunchDescription:
     )
     ld.add_action(line_detection)
 
+    sobel_derivative: Node = Node(
+        package="cv_ros_bridge_python",
+        executable="sobel_derivative",
+        name="sobel_derivative",
+        output="screen",
+    )
+    ld.add_action(sobel_derivative)
+
     return ld
