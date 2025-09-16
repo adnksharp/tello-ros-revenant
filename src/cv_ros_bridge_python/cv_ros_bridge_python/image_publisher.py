@@ -13,7 +13,7 @@ class ImagePublisher(Node):
         self.image_timer = self.create_timer(1 / self.image_freq, self.image_callback)
 
         self.bridge = CvBridge()
-        self.cv_image = cv2.imread(image_path, cv2.IMREAD_COLOR_BGR)
+        self.cv_image = cv2.imread(image_path, cv2.IMREAD_COLOR)
 
         self.image_path = image_path
         self.image = self.bridge.cv2_to_imgmsg(self.cv_image, "bgr8")
