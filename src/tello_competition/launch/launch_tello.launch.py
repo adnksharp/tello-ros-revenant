@@ -8,6 +8,7 @@ from launch_ros.actions import Node
 
 # SSID_OBJETIVO = "TELLO-9A0D42"
 SSID_OBJETIVO = "ConectaUACJ"
+# SSID_OBJETIVO = "MotherBase"
 
 
 def verificar_ssid(context, *args, **kwargs):
@@ -111,7 +112,7 @@ def generate_launch_description() -> LaunchDescription:
         output="screen",
         namespace="/",
         name="rviz",
-        arguments=["-d", "/home/gl/ros2_test_ws/src/pruebas/config/tello.rviz"],
+        arguments=["-d", "/home/xtal/ros2_ws/src/tello_competition/rviz/tello.rviz"],
         respawn=True,
     )
 

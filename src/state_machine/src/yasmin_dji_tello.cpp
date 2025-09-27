@@ -112,65 +112,87 @@ int main(int argc, char *argv[]) {
             std::initializer_list<std::string>{
                 yasmin_ros::basic_outcomes::SUCCEED,
                 yasmin_ros::basic_outcomes::FAIL,
-                yasmin_ros::basic_outcomes::ABORT
+                yasmin_ros::basic_outcomes::ABORT,
+            },
+            std::bind(&YasminDroneStateHelper::ping_cb, helper, std::placeholders::_1)
+        ),
+        {
+            {yasmin_ros::basic_outcomes::SUCCEED, "VERIFY_SENSORS"},
+            {yasmin_ros::basic_outcomes::FAIL, "TIMEOUT"},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
+        });
+    sm->add_state("VERIFY_SENSORS",
+        std::make_shared<yasmin::CbState>(
+            std::initializer_list<std::string>{
+                yasmin_ros::basic_outcomes::SUCCEED,
+                yasmin_ros::basic_outcomes::FAIL,
+                yasmin_ros::basic_outcomes::ABORT,
             },
             std::bind(&YasminDroneStateHelper::ping_cb, helper, std::placeholders::_1)
         ),
         {
             {yasmin_ros::basic_outcomes::SUCCEED, "TAKEOFF"},
-            {yasmin_ros::basic_outcomes::FAIL, "TIMEOUT"},
+            {yasmin_ros::basic_outcomes::FAIL, "NO_TOPICS_DATA"},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
         });
 
     sm->add_state("TAKEOFF",
         std::make_shared<yasmin::CbState>(
             std::initializer_list<std::string>{
                 yasmin_ros::basic_outcomes::SUCCEED,
+                yasmin_ros::basic_outcomes::ABORT,
                 yasmin_ros::basic_outcomes::FAIL,
-                yasmin_ros::basic_outcomes::ABORT
             },
             std::bind(&YasminDroneStateHelper::takeoff_cb, helper, std::placeholders::_1)
         ),
         {
             {yasmin_ros::basic_outcomes::SUCCEED, "YAW_LEFT"},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
+            {yasmin_ros::basic_outcomes::FAIL, "NO_TOPICS_DATA"},
         });
 
     sm->add_state("YAW_LEFT",
         std::make_shared<yasmin::CbState>(
             std::initializer_list<std::string>{
                 yasmin_ros::basic_outcomes::SUCCEED,
-                // yasmin_ros::basic_outcomes::FAIL,
-                yasmin_ros::basic_outcomes::ABORT
+                yasmin_ros::basic_outcomes::ABORT,
+                yasmin_ros::basic_outcomes::FAIL,
             },
             std::bind(&YasminDroneStateHelper::yaw_left_cb, helper, std::placeholders::_1)
         ),
         {
             {yasmin_ros::basic_outcomes::SUCCEED, "YAW_RIGHT"},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
+            {yasmin_ros::basic_outcomes::FAIL, "NO_TOPICS_DATA"},
         });
 
     sm->add_state("YAW_RIGHT",
         std::make_shared<yasmin::CbState>(
             std::initializer_list<std::string>{
                 yasmin_ros::basic_outcomes::SUCCEED,
-                // yasmin_ros::basic_outcomes::FAIL,
-                yasmin_ros::basic_outcomes::ABORT
+                yasmin_ros::basic_outcomes::ABORT,
+                yasmin_ros::basic_outcomes::FAIL,
             },
             std::bind(&YasminDroneStateHelper::yaw_right_cb, helper, std::placeholders::_1)
         ),
         {
             {yasmin_ros::basic_outcomes::SUCCEED, "LANDING"},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
+            {yasmin_ros::basic_outcomes::FAIL, "NO_TOPICS_DATA"},
         });
 
     sm->add_state("LANDING",
         std::make_shared<yasmin::CbState>(
             std::initializer_list<std::string>{
                 yasmin_ros::basic_outcomes::SUCCEED,
+                yasmin_ros::basic_outcomes::ABORT,
                 yasmin_ros::basic_outcomes::FAIL,
-                // yasmin_ros::basic_outcomes::ABORT
             },
             std::bind(&YasminDroneStateHelper::land_cb, helper, std::placeholders::_1)
         ),
         {
             {yasmin_ros::basic_outcomes::SUCCEED, yasmin_ros::basic_outcomes::SUCCEED},
+            {yasmin_ros::basic_outcomes::ABORT, "KEYBOARD_INTERRUPT"},
         });
 
     sm->add_state("TIMEOUT",
@@ -180,6 +202,22 @@ int main(int argc, char *argv[]) {
         ),
         {
             {yasmin_ros::basic_outcomes::FAIL, yasmin_ros::basic_outcomes::FAIL}
+        });
+    sm->add_state("NO_TOPICS_DATA",
+        std::make_shared<yasmin::CbState>(
+            std::initializer_list<std::string>{yasmin_ros::basic_outcomes::SUCCEED},
+            std::bind(&YasminDroneStateHelper::aborted_cb, helper, std::placeholders::_1)
+        ),
+        {
+            {yasmin_ros::basic_outcomes::SUCCEED, "LANDING"}
+        });
+    sm->add_state("KEYBOARD_INTERRUPT",
+        std::make_shared<yasmin::CbState>(
+            std::initializer_list<std::string>{yasmin_ros::basic_outcomes::SUCCEED},
+            std::bind(&YasminDroneStateHelper::aborted_cb, helper, std::placeholders::_1)
+        ),
+        {
+            {yasmin_ros::basic_outcomes::SUCCEED, "LANDING"}
         });
 
     yasmin_viewer::YasminViewerPub yasmin_pub("YASMIN_DJI_TELLO", sm);

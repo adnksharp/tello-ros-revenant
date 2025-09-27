@@ -34,6 +34,7 @@ endif()
 
 add_executable(state_machine_node src/publisher_demo.cpp)
 add_executable(state_machine_yasmin src/yasmin_dji_tello.cpp)
+add_executable(simple_state src/simple_state.cpp)
 
 ament_target_dependencies(state_machine_node
   rclcpp
@@ -61,9 +62,23 @@ ament_target_dependencies(state_machine_yasmin
   yasmin_viewer
 )
 
+ament_target_dependencies(simple_state
+  rclcpp
+  rclcpp_action
+  std_msgs
+  geometry_msgs
+  nav_msgs
+  sensor_msgs
+  example_interfaces
+  yasmin
+  yasmin_ros
+  yasmin_viewer
+)
+
 install(TARGETS
   state_machine_node
   state_machine_yasmin
+  simple_state
   DESTINATION lib/${PROJECT_NAME}
 )
 
