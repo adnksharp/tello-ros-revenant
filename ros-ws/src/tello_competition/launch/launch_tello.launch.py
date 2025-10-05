@@ -1,4 +1,4 @@
-#!/home/xtal/ros2_venv/bin python
+#!/usr/bin/env python3
 
 import subprocess
 
@@ -6,40 +6,31 @@ from launch import LaunchDescription
 from launch.actions import LogInfo, OpaqueFunction, Shutdown
 from launch_ros.actions import Node
 
-# SSID_OBJETIVO = "TELLO-9A0D42"
-SSID_OBJETIVO = "ConectaUACJ"
+SSID_OBJETIVO = "TELLO-A04B3A"
+#SSID_OBJETIVO = "ConectaUACJ"
 # SSID_OBJETIVO = "MotherBase"
 
 
 def verificar_ssid(context, *args, **kwargs):
     try:
         resultado = subprocess.run(
-            ["nmcli", "-t", "-f", "active,ssid", "dev", "wifi"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
+            ["iwgetid", "-r"], capture_output=True, text=True, check=True
         )
-        ssids_activos = [
-            linea.split(":")[1]
-            for linea in resultado.stdout.splitlines()
-            if linea.startswith("yes:")
-        ]
-
-        if SSID_OBJETIVO in ssids_activos:
-            return []
+        ssid_actual = resultado.stdout.strip()
+        if ssid_actual == SSID_OBJETIVO:
+            return [LogInfo(msg=f"Conectado a la red WiFi correcta: {ssid_actual}")]
         else:
             return [
                 LogInfo(
-                    msg=f"SSID incorrecto. Se esperaba '{SSID_OBJETIVO}', pero se encontró: {ssids_activos}"
+                    msg=f"Error: Conectado a la red WiFi incorrecta: {ssid_actual}. Se esperaba: {SSID_OBJETIVO}"
                 ),
-                Shutdown(reason="SSID no válido"),
+                Shutdown(),
             ]
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         return [
-            LogInfo(msg=f"Error verificando SSID: {e}"),
-            Shutdown(reason="Error en verificación"),
+            LogInfo(msg=f"Error al obtener el SSID de la red WiFi: {e}"),
+            Shutdown(),
         ]
-
 
 def generate_launch_description() -> LaunchDescription:
     ld: LaunchDescription = LaunchDescription()
