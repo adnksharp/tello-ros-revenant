@@ -27,6 +27,7 @@ install(DIRECTORY
 install(PROGRAMS
 	src/gui.py
 	src/rtgui_button.py
+	src/rtgui_label.py
 	DESTINATION lib/${PROJECT_NAME}
 )
 

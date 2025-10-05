@@ -5,8 +5,8 @@ from PySide6.QtCore import Qt, QTimer, QPoint
 
 from ament_index_python.packages import get_package_share_directory
 
-class CustomAnimatedButton(QPushButton):
-    def __init__(self, text, accent, parent=None):
+class RTButton(QPushButton):
+    def __init__(self, text, accent, textColor, parent=None):
         super().__init__("", parent)
 
         self.colors = {
@@ -31,14 +31,15 @@ class CustomAnimatedButton(QPushButton):
         self.pressed = False
         self.glow = 30
         self.accent = accent
+        self.textColor = textColor if textColor in self.colors else "fg"
 
         self.glowAT = QTimer(self)
         self.glowAT.timeout.connect(self.animate_glow)
         self.glowAT.start(30)
 
         self.setStyleSheet("background: transparent; border: none;")
-        self.setMinimumSize(154, 44)
         self.setFixedWidth(len(text) * 16)
+        self.setMinimumSize(54, 44)
 
     def enterEvent(self, event):
         self.hovered = True
@@ -70,23 +71,26 @@ class CustomAnimatedButton(QPushButton):
             self.glow -= 5
         self.update()
 
+    def setText(self, text):
+        self.text = text
+        self.update()
+
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-        borderColor = self.colors[self.accent]
         borderWidth = 2
         
-        fill_color = self.colors[self.accent].darker(400 - self.glow)
+        borderColor = self.colors[self.accent[1]]
+        fillColor = self.colors[self.accent[0]].darker(400 - self.glow)
         if self.pressed:
-            fill_color = self.colors[self.accent].darker(350 - self.glow)
+            fillColor = self.colors[self.accent[1]].darker(350 - self.glow)
         elif self.hovered:
-            fill_color = self.colors[self.accent].darker(600 - self.glow)
+            fillColor = self.colors[self.accent[1]].darker(600 - self.glow)
 
         painter.setPen(borderColor)
-        painter.setBrush(fill_color)
+        painter.setBrush(fillColor)
 
-        #fixed width based on text length
         w, h = self.width(), self.height()
         points = [
             QPoint(0, 0),
@@ -99,5 +103,5 @@ class CustomAnimatedButton(QPushButton):
         painter.drawPolygon(QPolygon(points))
 
         painter.setFont(self.customFont)
-        painter.setPen(self.colors[self.accent])
+        painter.setPen(self.colors[self.textColor])
         painter.drawText(self.rect(), Qt.AlignCenter, self.text)
