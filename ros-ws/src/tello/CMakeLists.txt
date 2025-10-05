@@ -12,14 +12,21 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(DIRECTORY
+	include
 	launch
 	rviz
 	models
 	DESTINATION share/${PROJECT_NAME}
 )
 
+install(DIRECTORY 
+	include
+	DESTINATION lib/${PROJECT_NAME}
+)
+
 install(PROGRAMS
 	src/gui.py
+	src/rtgui_button.py
 	DESTINATION lib/${PROJECT_NAME}
 )
 
