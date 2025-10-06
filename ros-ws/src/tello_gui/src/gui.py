@@ -5,6 +5,7 @@ from PySide6.QtGui import QPainter, QColor, QBrush, QLinearGradient, QColor, QPi
 from PySide6.QtWidgets import QLabel
 from rtgui_button import RTButton
 from rtgui_label import RTLabel
+from rtgui_overlay import Overlay
 from rtgui_videoframe import VideoFrame
 
 import cv2
@@ -171,6 +172,10 @@ class MainWindow(QWidget):
         pkgDir = joinOS(get_package_share_directory('tello_gui'), 'include')
         testIMG = cv2.imread(joinOS(pkgDir, 'testimg.jpg'))
         self.videoFrame.updateImage(testIMG)
+
+        self.overlay = Overlay(self)
+        self.overlay.resize(self.size())
+        self.overlay.raise_()
         
         self.show()
 
@@ -228,7 +233,7 @@ class MainWindow(QWidget):
         super().mouseMoveEvent(event)
 
     def sendPos(self, event):
-        pos = event.pos()
+        pos = event.position()
         center = self.width() / 2
         delta = int(pos.x() - center) // 4
 
@@ -252,6 +257,10 @@ class MainWindow(QWidget):
         painter.setBrush(QBrush(grad))
         painter.setPen(Qt.NoPen)
         painter.drawRect(self.rect())
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self.overlay.resize(self.size())
 
     def closeEvent(self, event):
         RosThread.stop(self.ros)
