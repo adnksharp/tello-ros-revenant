@@ -209,6 +209,13 @@ class MainWindow(QWidget):
 
         super().keyPressEvent(event)
 
+    def wheelEvent(self, event):
+        delta = int(event.angleDelta().y() / 120)
+
+        if delta != 0:
+            msg = f'SCROLL_{delta}'
+            self.mouseScrolled.emit(msg)
+
     def toggleMaxRestore(self):
         if self.isMaximized():
             self.showNormal()
@@ -227,7 +234,7 @@ class MainWindow(QWidget):
         painter.drawRect(self.rect())
 
     def closeEvent(self, event):
-        RosThread.stop()
+        RosThread.stop(self.ros)
         event.accept()
 
 
