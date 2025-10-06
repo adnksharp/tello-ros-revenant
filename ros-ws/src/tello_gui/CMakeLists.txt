@@ -29,6 +29,7 @@ install(PROGRAMS
 	src/rtgui_button.py
 	src/rtgui_label.py
 	src/rtgui_videoframe.py
+	src/rtros.py
 	DESTINATION lib/${PROJECT_NAME}
 )
 
