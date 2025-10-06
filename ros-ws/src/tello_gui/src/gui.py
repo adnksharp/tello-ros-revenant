@@ -94,7 +94,6 @@ class MainWindow(QWidget):
             sensorLayout.addStretch()
             self.sensorLayout.addLayout(sensorLayout)
 
-        self.sensorLayout.setContentsMargins(10, 10, 10, 10)
         self.sensorLayout.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         
         self.infoLBL1 = QHBoxLayout()
@@ -160,7 +159,8 @@ class MainWindow(QWidget):
         mainLayout = QVBoxLayout()
         mainLayout.addLayout(self.titleLayout)
         mainLayout.addLayout(self.bodyLayout)
-
+        
+        self.bodyLayout.setContentsMargins(10, 0, 10, 10)
         mainLayout.setContentsMargins(0, 0, 0, 0)
 
         self.setLayout(mainLayout)
