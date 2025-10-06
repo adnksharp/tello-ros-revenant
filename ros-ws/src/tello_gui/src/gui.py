@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
-from PySide6.QtCore import Qt, QRectF, QTimer
+from PySide6.QtCore import Qt, QRectF, QTimer, Signal, Slot
 from PySide6.QtGui import QPainter, QColor, QBrush, QLinearGradient, QColor, QPixmap, QImage
 from PySide6.QtWidgets import QLabel
 from rtgui_button import RTButton
@@ -9,9 +9,14 @@ from rtgui_videoframe import VideoFrame
 
 import cv2
 from os.path import join as joinOS
+
 from ament_index_python.packages import get_package_share_directory
+from rtros import RosNode, RosThread
 
 class MainWindow(QWidget):
+    keyPressed = Signal(str)
+    mouseMoved = Signal(str)
+    mouseScrolled = Signal(str)
     def __init__(self, title):
         super().__init__()
         self.setWindowTitle(title)
@@ -89,13 +94,12 @@ class MainWindow(QWidget):
             self.sensorLayout.addLayout(sensorLayout)
 
         self.sensorLayout.setContentsMargins(10, 10, 10, 10)
-        #align left
         self.sensorLayout.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         
         self.infoLBL1 = QHBoxLayout()
         infoLBL1_1 = RTLabel('Usa las teclas', 'yellow', 10)
         infoLBL1_2 = RTLabel(' W A S D ', 'teal', 10)
-        infoLBL1_3 = RTLabel('para mover el dron.', 'yellow', 10)
+        infoLBL1_3 = RTLabel('para moverte.', 'yellow', 10)
         self.infoLBL1.addStretch()
         self.infoLBL1.addWidget(infoLBL1_1)
         self.infoLBL1.addWidget(infoLBL1_2)
@@ -115,7 +119,7 @@ class MainWindow(QWidget):
         self.infoLBL3 = QHBoxLayout()
         infoLBL3_1 = RTLabel('Usa el', 'yellow', 10)
         infoLBL3_2 = RTLabel('ratón', 'teal', 10)
-        infoLBL3_3 = RTLabel('para girar el dron.', 'yellow', 10)
+        infoLBL3_3 = RTLabel('para girar.', 'yellow', 10)
         self.infoLBL3.addStretch()
         self.infoLBL3.addWidget(infoLBL3_1)
         self.infoLBL3.addWidget(infoLBL3_2)
@@ -170,6 +174,41 @@ class MainWindow(QWidget):
         
         self.show()
 
+        self.ros = RosThread()
+        self.ros.start()
+
+        self.keyPressed.connect(self.ros.node.publish)
+        self.mouseMoved.connect(self.ros.node.publish)
+        self.mouseScrolled.connect(self.ros.node.publish)
+
+    def keyPressEvent(self, event):
+        keyMAP = {
+            Qt.Key_W: 'W',
+            Qt.Key_A: 'A',
+            Qt.Key_S: 'S',
+            Qt.Key_D: 'D',
+        }
+        keyCode = event.key()
+
+        if keyCode in keyMAP:
+            key = keyMAP[keyCode]
+            modifiers = event.modifiers()
+
+            mod = ''
+            if modifiers & Qt.ControlModifier:
+                mod = 'CTRL'
+            if modifiers & Qt.AltModifier:
+                mod = 'ALT'
+
+            if mod:
+                msg = f'KEY_{mod}_{key}'
+            else:
+                msg = f'KEY_{key}'
+
+            self.keyPressed.emit(msg)
+
+        super().keyPressEvent(event)
+
     def toggleMaxRestore(self):
         if self.isMaximized():
             self.showNormal()
@@ -188,6 +227,7 @@ class MainWindow(QWidget):
         painter.drawRect(self.rect())
 
     def closeEvent(self, event):
+        RosThread.stop()
         event.accept()
 
 
