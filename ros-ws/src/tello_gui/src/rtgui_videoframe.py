@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QLabel
-from PySide6.QtGui import QPainter, QColor, QPixmap, QBrush, QLinearGradient
+from PySide6.QtGui import QPainter, QColor, QPixmap, QBrush, QLinearGradient, QImage
 from PySide6.QtCore import Qt, QRectF
 
 class VideoFrame(QLabel):
@@ -11,14 +11,10 @@ class VideoFrame(QLabel):
         palette.setColor(self.backgroundRole(), QColor(0, 0, 0, 255))
         self.setPalette(palette)
 
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        grad = QLinearGradient(0, 0, 0, self.height())
-        grad.setColorAt(0, QColor(0, 0, 0, 0))
-        painter.setBrush(QBrush(grad))
-        painter.setPen(Qt.NoPen)
-        painter.drawRect(self.rect())
-
-        video_rect = QRectF(20, 100, 1280, 720)
-        painter.setBrush(QColor(0, 0, 0, 0))
-        painter.drawRect(video_rect)
+    def updateImage(self, image): # image is a cv2.imgread result
+        height, width, channel = image.shape
+        bytesPerLine = 3 * width
+        qImg = QPixmap.fromImage(
+            QImage(image.data, width, height, bytesPerLine, QImage.Format_RGB888).rgbSwapped()
+        )
+        self.setPixmap(qImg.scaled(self.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))

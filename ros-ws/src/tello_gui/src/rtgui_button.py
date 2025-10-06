@@ -22,7 +22,7 @@ class RTButton(QPushButton):
         }
 
         pkgDir = joinOS(get_package_share_directory('tello_gui'), 'include')
-        fontID = QFontDatabase.addApplicationFont(joinOS(pkgDir, 'fonts/Sansation-Regular.ttf'))
+        fontID = QFontDatabase.addApplicationFont(joinOS(pkgDir, 'fonts/RedditMono.ttf'))
         families = QFontDatabase.applicationFontFamilies(fontID)
         self.customFont = QFont(families[0], 16)
         self.text = text

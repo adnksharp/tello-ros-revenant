@@ -22,14 +22,14 @@ class RTLabel(QPushButton):
         }
 
         pkgDir = joinOS(get_package_share_directory('tello_gui'), 'include')
-        fontID = QFontDatabase.addApplicationFont(joinOS(pkgDir, 'fonts/Sansation-Regular.ttf'))
+        fontID = QFontDatabase.addApplicationFont(joinOS(pkgDir, 'fonts/RedditMono.ttf'))
         families = QFontDatabase.applicationFontFamilies(fontID)
         self.customFont = QFont(families[0], fsize)
         self.text = text
         self.accent = accent if accent in self.colors else "fg"
 
         self.setStyleSheet("background: transparent; border: none;")
-        self.setMinimumSize(30, fsize * 1.5)
+        #self.setMinimumSize(30, fsize * 1.5)
         self.setFixedWidth(len(text) * (fsize - 2))
 
     def setText(self, text):
