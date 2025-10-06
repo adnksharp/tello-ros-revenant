@@ -216,6 +216,26 @@ class MainWindow(QWidget):
             msg = f'SCROLL_{delta}'
             self.mouseScrolled.emit(msg)
 
+    def mousePressEvent(self, event):
+        if event.button() == Qt.RightButton:
+            self.keyPressed.emit('MOUSE_2')
+        elif event.button() == Qt.LeftButton:
+            self.sendPos(event)
+        super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        self.sendPos(event)
+        super().mouseMoveEvent(event)
+
+    def sendPos(self, event):
+        pos = event.pos()
+        center = self.width() / 2
+        delta = int(pos.x() - center) // 4
+
+        if delta != 0:
+            msg = f'GYRO_{delta}'
+            self.mouseMoved.emit(msg)
+
     def toggleMaxRestore(self):
         if self.isMaximized():
             self.showNormal()
